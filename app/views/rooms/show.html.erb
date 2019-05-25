@@ -1,0 +1,39 @@
+<h1>Chat room</h1>
+
+<div id="messages">
+</div>
+
+
+<div class="new-post">
+    <input name="content" rows="2" cols="65" data-behavior="room_speaker">
+    <select id="group" name="group">
+      <option value="<%= @pon %>">Group1</option>
+      <option value="2">Group2</option>
+      <option value="3">Group3</option>
+    </select>
+    <button id="ggg">決定</button>
+</div>
+<script>
+App.room = App.cable.subscriptions.create({
+  channel: "RoomChannel",
+  room: $('#group').val()
+}, {
+  connected: function() {},
+  disconnected: function() {},
+  received: function(data) {
+    return $('#messages').append('<p>' + data['message'] + '</p>');
+  },
+  speak: function(message) {
+    return this.perform('speak', {
+      message: message,
+      room: $('#group').val()
+    });
+  }
+}, $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+  if (event.keyCode === 13) {
+    App.room.speak(event.target.value);
+    event.target.value = '';
+    return event.preventDefault();
+  }
+}));
+</script>

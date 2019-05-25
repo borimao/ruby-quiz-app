@@ -1,0 +1,201 @@
+body {
+    width: max;
+    height: max;
+    margin: 0px;
+    background: image-url('img01.jpg');
+}
+
+.back {
+    background: white;
+    margin: -10px auto;
+    width: 75%;
+}
+
+
+hr {
+    width: 90%;
+}
+
+.title {
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.title a{
+    text-decoration: none;
+    font-size: 50px;
+    color: #000000;
+}
+
+.loginlink {
+    float: right;
+}
+
+header {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: auto;
+}
+  
+#gnav {
+    background: #fff;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#gnav > ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 10px 10px 0 10px;
+}
+
+#gnav li{
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 20px 20px 0px 0px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+#homelist{
+    background: rgb(0, 235, 235);
+}
+
+#genrelist{
+    background: #01e70d;
+}
+
+#quizlist{
+    background: #f5f100;
+}
+
+#mylist{
+    background: orange;
+}
+
+#gnav li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#homelist:hover {
+    background: rgb(0, 255, 255);
+}
+
+#quizlist:hover {
+    background: #fffb00;
+}
+
+#mylist:hover {
+    background: rgb(255, 207, 73);
+}
+
+#gnav > ul > li:hover .menu {
+    max-height: 9999px;
+    opacity: 1;
+}
+
+#gnav > ul .menu {
+    transition: all .2s ease-in;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    position: absolute;
+}
+#gnav > ul .menu .menu_inner {
+    margin: 0 auto;
+    width: 70%;
+    background: #01e70d;
+    padding: 1em 0;
+    border-radius: 20px;
+}
+#gnav > ul .menu .menu_inner li {
+    display: inline-block;
+    margin: 2px .5em;
+    background: #fff;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+#gnav > ul .menu .menu_inner li a {
+    color: #01e70d;
+}
+
+#gnav > ul .menu a {
+    color: #fff;
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.show_title {
+    font-size: 35px;
+    margin: 0 auto;
+    font-weight: bold;
+    color: #fff;
+    background: orange; 
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+.show_nav {
+    font-weight: 100;
+    font-size: 14px;
+    color: darkgray;
+}
+
+.slider .slide {
+    width: 670px;
+    height: 370px;
+    border: 15px solid rgb(0, 255, 255);
+    float: left;
+    border-radius: 30px;
+    overflow: auto;
+}
+.slider .slideSet {
+    position: absolute;
+}
+.slider {
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.choicecount {
+    text-align: center;
+    font-size: 40px;
+    margin: 0 auto
+}
+
+.choicetext {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.qarea {
+    border: solid 2px rgb(0, 255, 255);
+    margin: 20px;
+    width: 250px;
+    float: left;
+}
+
+
+

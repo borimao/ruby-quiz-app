@@ -1,0 +1,8 @@
+<h1><%= @question.title %> <%= @count %>問目</h1>
+<% if @count.to_i > 1 then %>
+    <p><a href="/users"><%= @count.to_i - 1 %>問で終わる</a></p>
+<% end %>
+
+<%= render 'form', choice: @choice %>
+
+

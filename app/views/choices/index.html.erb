@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Choices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Correct</th>
+      <th>Dummya</th>
+      <th>Dummyb</th>
+      <th>Dummyc</th>
+      <th>Hint</th>
+      <th>Comment</th>
+      <th>Question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @choices.each do |choice| %>
+      <tr>
+        <td><%= choice.text %></td>
+        <td><%= choice.correct %></td>
+        <td><%= choice.dummya %></td>
+        <td><%= choice.dummyb %></td>
+        <td><%= choice.dummyc %></td>
+        <td><%= choice.hint %></td>
+        <td><%= choice.comment %></td>
+        <td><%= choice.question_id %></td>
+        <td><%= link_to 'Show', choice %></td>
+        <td><%= link_to 'Edit', edit_choice_path(choice) %></td>
+        <td><%= link_to 'Destroy', choice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Choice', new_choice_path %>

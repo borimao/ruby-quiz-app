@@ -1,0 +1,14 @@
+<h1>新着クイズ一覧</h1>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li class="qarea">
+      <div>
+        <a class="link" href="/questions/show/<%= question.id %>"><%= question.title %></a><br>
+        <a class="inlink" href="/questions/genre/<%= question.genre.id %>"><%= question.genre.genrename %></a><br>
+        <a class="inlink" href="/users/<%= question.user.id %>"><%= question.user.name %></a>
+      </div>
+    </li>
+
+  <% end %>
+</ul>

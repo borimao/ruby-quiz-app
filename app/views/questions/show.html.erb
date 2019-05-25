@@ -1,0 +1,108 @@
+<p><span class="show_title"><%= @question.title %></span>
+<span class="show_nav">ジャンル:<%= @question.genre.genrename %>  作成者:<%= @question.user.name %>  作成日:<%= @question.created_at %></apan>
+</p>
+
+<p>作者コメント「<%= @question.memo %>」</p>
+
+<div class="slider">
+  <div class="slideSet">
+    <% count = 1 %>
+    <% array = [] %>
+    <% @choices.each do |choice| %>
+      <div class="slide" id="slide<%= count.to_s %>">
+        <p class="choicecount"><%= count.to_s %>問目</p>
+        <p class="choicetext"><%= choice.text %></p>
+        <% array[0] = "<input type='button' value='" + choice.correct + "' onclick='correct(" + count.to_s + ")'>"  %>
+        <% if choice.dummya.length > 0 then %>
+          <% array[1] = "<input type='button' value='" + choice.dummya + "' onclick='incorrect(" + count.to_s + ")'>"  %>
+        <% end %>
+        <% if choice.dummyb.length > 0 then %>
+          <% array[2] = "<input type='button' value='" + choice.dummyb + "' onclick='incorrect(" + count.to_s + ")'>"  %>
+        <% end %>
+        <% if choice.dummyc.length > 0 then %>
+          <% array[3] = "<input type='button' value='" + choice.dummyc + "' onclick='incorrect(" + count.to_s + ")'>"  %>
+        <% end %>
+        <div class="choice"> 
+          <% array.shuffle.each do |obj| %>
+            <%= obj.html_safe %><br>
+          <% end %>
+          <% array.clear %>
+          <br>
+        </div>
+        <% if choice.hint.length > 0 then %>
+            <input type="button" value="ヒント" onclick="hint(<%= count.to_s %>)">
+            <span class="hintarea" id="hintarea<%= count.to_s %>"><%= choice.hint %></span>
+        <% end %>
+      </div>
+      <div class="slide" id="slideans<%= count.to_s %>">
+        <h2 id="ans<%= count.to_s %>"></h2>
+        <p>答え:<%= choice.correct %></p>
+        <p><%= choice.comment %></p>
+        <button class="next">次へ</button>
+      </div>
+      <% count += 1 %>
+    <% end %>
+    <div class="slide">
+      <h2>終了!</h2>
+      <p>あなたの得点は・・・</p>
+      <h1 id="score"></h1>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
+
+<script>
+  var slideWidth = $('.slide').outerWidth(); // .slideの幅を取得して代入
+  var slideNum = $('.slide').length;
+  var slideSetWidth = slideWidth * slideNum; // .slideの幅×数で求めた値を代入
+  console.log(slideNum);
+  $('.slideSet').css('width', slideSetWidth);
+  $('.hintarea').hide();
+  
+  var slideCurrent = 0;
+  var correctCounter = 0;
+  var quiznum = (slideNum - 1)/2;
+    
+  var sliding = function(){
+    $('.slideSet').animate({
+      left: slideCurrent * -slideWidth
+    });
+  }
+
+  var score = function(){
+    $('#score').text(correctCounter + "/" + quiznum + "点！");
+  }
+  
+  $('.slider-prev').click(function(){
+    slideCurrent--;
+    sliding();
+  });
+  
+  $('.next').click(function(){
+    slideCurrent++;
+    sliding();
+  });
+  
+  
+  function correct(num) {
+    $('#ans' + num).text('正解')
+    slideCurrent++;
+    correctCounter++;
+    score();
+    sliding();
+  }
+
+  function incorrect(num) {
+    $('#ans' + num).text('不正解')
+    slideCurrent++;
+    score();
+    sliding();
+  }
+
+  function hint(num) {
+    $('#hintarea' + num).show();
+  }
+  
+</script>

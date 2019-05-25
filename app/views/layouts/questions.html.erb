@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>MyQuiz</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'questions','data-turbolinks-track': 'reload' %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+
+　
+
+    <body>
+        <div class="back">
+            <header>
+                <h1 class="title"><a href="/questions">クイズ！</a></h1>
+                <a class="loginlink" href="/users">ログイン/マイページ</a>
+            </header>
+            <nav id="gnav">
+                <ul id="navi">
+                    <li id="homelist"><a href="/questions">ホーム</a></li>
+                    <li class="toggle" id="genrelist">ジャンル
+                        <div class="menu">
+                            <ul class="menu_inner">
+                                <% @genres.each do |genre| %>
+                                    <li><a href="/questions/genre/<%= genre.id %>"><%= genre.genrename %></a></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="quizlist"><a href="/users">クイズ作成</a></li>
+                    <li id="mylist"><a href="/users">マイページ</a></li>
+                </ul>
+            </nav>
+            <hr>
+            <div class="main">
+                <section>
+                    <%= yield %>
+                </section>
+            </div>
+        </div>
+    </body>
+  
+</html>

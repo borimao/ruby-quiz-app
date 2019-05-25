@@ -1,0 +1,57 @@
+<%= form_for(choice, url:{controller: 'choices', action: 'create',count:@count}) do |form| %>
+  <% if choice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(choice.errors.count, "error") %> prohibited this choice from being saved:</h2>
+
+      <ul>
+      <% choice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correct %>
+    <%= form.text_area :correct %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dummya %>
+    <%= form.text_area :dummya %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dummyb %>
+    <%= form.text_area :dummyb %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dummyc %>
+    <%= form.text_area :dummyc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hint %>
+    <%= form.text_area :hint %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :question_id %>
+    <%= form.number_field :question_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
